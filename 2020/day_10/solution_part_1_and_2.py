@@ -29,11 +29,11 @@ def part_1(histogram_list):
 
 def distinct_arrangements(list_of_numbers):
     list_of_numbers = list_of_numbers[1:]
-    ans = {}
-    ans[0] = 1
-    for a in list_of_numbers:
-        ans[a] = ans.get(a - 1, 0) + ans.get(a - 2, 0) + ans.get(a - 3, 0)
-    return ans[list_of_numbers[-1]]
+    routes_from = {}
+    routes_from[0] = 1
+    for number in list_of_numbers:
+        routes_from[number] = routes_from.get(number - 1, 0) + routes_from.get(number - 2, 0) + routes_from.get(number - 3, 0)
+    return routes_from[list_of_numbers[-1]]
 
 print(f'The number of 1-jolt differences multiplied by the number of 3-jolt differences is {part_1(histogram_dict(list_of_differences(jolt_list)))}')
 print(f'Total number of distinct ways to arrange is {distinct_arrangements(jolt_list)}')
