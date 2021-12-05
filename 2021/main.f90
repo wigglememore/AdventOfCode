@@ -2,7 +2,7 @@
 program day01
     implicit none
     character(30) :: fname
-    integer :: length, stat, increases, temp
+    integer :: length, stat, increases, temp, i
     integer, dimension(:), allocatable :: depths(:)
 
 
@@ -29,9 +29,9 @@ program day01
     temp = depths(1)
     do i=2,length
         if (depths(i) > temp) then
-            increases += 1
+            increases = increases + 1
         endif
-        end if
+        temp = depths(i)
     end do
 
     print *, "Number of increases is", increases
