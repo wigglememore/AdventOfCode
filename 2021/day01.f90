@@ -96,4 +96,3 @@ program day01
     print *, "Number of increases for part 2 is", countTripleIncreases(depthsTriple, length)
 
 end program
-
