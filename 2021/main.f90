@@ -21,34 +21,79 @@ contains
   end function countIncreases
 end module part1
 
+module part2
+  implicit none
+  public :: countTripleIncreases
+contains
+  function countTripleIncreases (x, n) result(increases)
+    implicit none
+    integer, intent(in) :: n
+    integer, dimension(n), intent(inout) :: x
+    integer :: temp, current, i, increases
+
+    increases = 0
+    temp = x(1) + x(2) + x(3)
+    do i=4,n
+        current = x(i-2) + x(i-1) + x(i)
+        if (current > temp) then
+            increases = increases + 1
+        endif
+        temp = current
+    end do
+
+    return
+  end function countTripleIncreases
+end module part2
+
 program day01
     use part1, only: countIncreases
+    use part2, only: countTripleIncreases
     implicit none
-    character(30) :: fname
+    character(30) :: fnamep1, fnamep2
     integer :: length, stat
-    integer, dimension(:), allocatable :: depths(:)
+    integer, dimension(:), allocatable :: depthsSingle(:), depthsTriple(:)
 
+    ! input file names
+    fnamep1='data/d1p1.txt'
+    fnamep2='data/d1p2.txt'
 
-    fname='data/input.txt'
-    ! open the file
+    ! import part 1 input data
     ! unit, file name & location, status (old = current file), iostat = status message (0 = fine, negative = error), action = possible actions with the file
-    open(1, file=fname, status='old', iostat=stat, action='read')
+    open(1, file=fnamep1, status='old', iostat=stat, action='read')
     if (stat .ne. 0) then
-       write(*,*) fname, 'cannot be opened'
-       go to 99
+       write(*,*) fnamep1, 'cannot be opened'
+       go to 98
     end if
-
     ! need to fix this bit so the length doesn't have to be in the first line
     read(1,*) length
-    allocate(depths(length))
-    read(1,*) depths
+    allocate(depthsSingle(length))
+    read(1,*) depthsSingle
     close(1)
-    !write(*,*) depths
-
     ! close the file
-    99 close(1)
+    98 close(1)
 
-    print *, "Number of increases is", countIncreases(depths, length)
+    ! solve and print part 1
+    print *, "Number of increases for part 1 is", countIncreases(depthsSingle, length)
+
+    ! import part 2 input data
+
+    ! open the file
+    ! unit, file name & location, status (old = current file), iostat = status message (0 = fine, negative = error), action = possible actions with the file
+    open(2, file=fnamep2, status='old', iostat=stat, action='read')
+    if (stat .ne. 0) then
+       write(*,*) fnamep2, 'cannot be opened'
+       go to 99
+    end if
+    ! need to fix this bit so the length doesn't have to be in the first line
+    read(2,*) length
+    allocate(depthsTriple(length))
+    read(2,*) depthsTriple
+    close(2)
+    ! close the file
+    99 close(2)
+
+    ! solve and print part 2
+    print *, "Number of increases for part 2 is", countTripleIncreases(depthsTriple, length)
 
 end program
 
