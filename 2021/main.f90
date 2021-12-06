@@ -1,8 +1,31 @@
+module part1
+  implicit none
+  public :: countIncreases
+contains
+  function countIncreases (x, n) result(increases)
+    implicit none
+    integer, intent(in) :: n
+    integer, dimension(n), intent(inout) :: x
+    integer :: temp, i, increases
+
+    increases = 0
+    temp = x(1)
+    do i=2,n
+        if (x(i) > temp) then
+            increases = increases + 1
+        endif
+        temp = x(i)
+    end do
+
+    return
+  end function countIncreases
+end module part1
 
 program day01
+    use part1, only: countIncreases
     implicit none
     character(30) :: fname
-    integer :: length, stat, increases, temp, i
+    integer :: length, stat
     integer, dimension(:), allocatable :: depths(:)
 
 
@@ -25,16 +48,7 @@ program day01
     ! close the file
     99 close(1)
 
-    increases = 0
-    temp = depths(1)
-    do i=2,length
-        if (depths(i) > temp) then
-            increases = increases + 1
-        endif
-        temp = depths(i)
-    end do
-
-    print *, "Number of increases is", increases
+    print *, "Number of increases is", countIncreases(depths, length)
 
 end program
 
