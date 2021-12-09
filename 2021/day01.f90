@@ -53,10 +53,9 @@ program day01
     integer :: length, iostatus1
     integer, dimension(:), allocatable :: depths(:)
 
-    ! ------------------------------ part 1 ------------------------------
-    ! part 1 input file name
+    !input file name
     fnamep1='data/day01.txt'
-    ! import part 1 input data
+    ! import input data
     ! unit, file name & location, status (old = current file), iostat = status message (0 = fine, negative = error), action = possible actions with the file
     open(101, file=fnamep1, status='old', action='read')
     length = 0
