@@ -1,5 +1,6 @@
 bin\
 obj\
-Debug\
+bin\Debug\
+obj\Debug\
 *.layout
 *.depend
