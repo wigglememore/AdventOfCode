@@ -1,6 +1,8 @@
 bin\
 obj\
-bin\Debug\
-obj\Debug\
+2021\bin\Debug\
+2021\obj\
 *.layout
 *.depend
+*.exe
+*.o
