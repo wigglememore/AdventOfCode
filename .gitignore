@@ -6,3 +6,4 @@ obj\
 *.depend
 *.exe
 *.o
+*.cbp
