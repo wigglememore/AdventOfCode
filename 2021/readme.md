@@ -13,3 +13,9 @@ For day 2 I used the [strings module](https://gbenthien.net/strings/index.html])
 Additionally, I had trouble reading in each line of the input file with read(101,*, iostat=iostatus) line where 'line' was initialised as character(30) because it seemed to stop reading at the space between the direction and distance.  I fixed this by using read(101,'(A)', iostat=iostatus) line which I'm almost certain is bad Fortran 90 (I think it is left over from Fortran 77) but again, it worked...
 
 To run day 2 you first need to compile precmod.f90 and stringmod.f90 before day02.f90
+
+### Day 3
+
+The first part of day 3 went okay once I figured out how to read the input into an array and read that arrays in Fortran are column-major.  The only other issue was the binary to integer function I grabbed from a forum which (unless I briefly lost the ability to read) did not remotely do what I wanted it to.
+
+Part 2 took a bit more thinking.  Initially I tried to find some kind of linked list module and came across [this](https://github.com/mapmeld/fortran-machine/tree/main/flibs-0.9/flibs/src/datastructures) great github repo of fortran utilities.  I was struggling to conceptualise the logic with the methods of this linked list implementation so came up with an alternate approach of using an additional array (of the same length as the input) of logicals to record which input numbers had been discounted by the rules.  Once this was decided, the rest went down extremely quickly.  I don't think it is a particularly efficient method and could probably be re-written using the same approach with a lot less loops, but it worked and I'm proud of it.
