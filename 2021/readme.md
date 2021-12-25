@@ -26,5 +26,5 @@ As per usual reading in the data took much longer to figure out than implementin
 
 I discovered a ocuple of great build in functions for arrays to do some of the work in part 1
 
-* Once again from [jacobwilliams](https://github.com/jacobwilliams) the (where)[http://www.personal.psu.edu/jhm/f90/statements/where.html] function (used to mask the assignment or evaluation of arrays) to mark in the logical array where the last called bingo ball matched a number in a bingo board
+* Once again from [jacobwilliams](https://github.com/jacobwilliams) the [where](http://www.personal.psu.edu/jhm/f90/statements/where.html) function (used to mask the assignment or evaluation of arrays) to mark in the logical array where the last called bingo ball matched a number in a bingo board
 * The [sum](https://gcc.gnu.org/onlinedocs/gfortran/SUM.html) function to quickly evaluate the result of the unmarked numbers
