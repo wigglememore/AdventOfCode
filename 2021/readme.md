@@ -19,3 +19,12 @@ To run day 2 you first need to compile precmod.f90 and stringmod.f90 before day0
 The first part of day 3 went okay once I figured out how to read the input into an array and read that arrays in Fortran are column-major.  The only other issue was the binary to integer function I grabbed from a forum which (unless I briefly lost the ability to read) did not remotely do what I wanted it to.
 
 Part 2 took a bit more thinking.  Initially I tried to find some kind of linked list module and came across [this](https://github.com/mapmeld/fortran-machine/tree/main/flibs-0.9/flibs/src/datastructures) great github repo of fortran utilities.  I was struggling to conceptualise the logic with the methods of this linked list implementation so came up with an alternate approach of using an additional array (of the same length as the input) of logicals to record which input numbers had been discounted by the rules.  Once this was decided, the rest went down extremely quickly.  I don't think it is a particularly efficient method and could probably be re-written using the same approach with a lot less loops, but it worked and I'm proud of it.
+
+### Day 4
+
+As per usual reading in the data took much longer to figure out than implementing the logic required for the bingo game.  I knew I needed a data type to contain the bingo boards and same sized logical array: in Python I would probably try a dictionary but I knew you could create your own data types in Fortran, and [jacobwilliams](https://github.com/jacobwilliams) on Github had a great implementation of a board type containing the two arrays which I used.  I also used a subroutine from Thomas Koenig (on the comp.lang.fortran google group) to split a line by comma delimiter to separate the initial line of (as I called them) bingo balls.
+
+I discovered a ocuple of great build in functions for arrays to do some of the work in part 1
+
+* Once again from [jacobwilliams](https://github.com/jacobwilliams) the (where)[http://www.personal.psu.edu/jhm/f90/statements/where.html] function (used to mask the assignment or evaluation of arrays) to mark in the logical array where the last called bingo ball matched a number in a bingo board
+* The [sum](https://gcc.gnu.org/onlinedocs/gfortran/SUM.html) function to quickly evaluate the result of the unmarked numbers
