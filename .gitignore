@@ -7,3 +7,5 @@ obj\
 *.exe
 *.o
 *.cbp
+*.mod
+*.101
