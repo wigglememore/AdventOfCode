@@ -81,6 +81,50 @@ program day04
     score = winDraw * (sum(bingoBoards(winBoard)%nums) - sum(bingoBoards(winBoard)%nums, mask=bingoBoards(winBoard)%mask))
     write(*,*) 'Winning score for part 1 is: ', score
 
+    ! -------------------- part 2 --------------------
+
+    do iBoard = 1, size(bingoBoards)
+        bingoBoards(iBoard)%mask = .false. !reset boards
+    end do
+
+    partTwoMain: do iPlay = 1, size(bingoBalls)
+        !play the game (where function in that was implemented in fortran 90 seen used by jacobwilliams also)
+        do iBoard = 1, size(bingoBoards)
+            where (bingoBoards(iBoard)%nums == bingoBalls(iPlay))
+                bingoBoards(iBoard)%mask = .true.
+            end where
+        end do
+
+        !check for win, update won logical in board type
+        do iBoard = 1, size(bingoBoards)
+            do iCheck = 1, 5
+                if (all(bingoBoards(iBoard)%mask(iCheck,:))) then !winning col
+                    bingoBoards(iBoard)%won = .true.
+                else if (all(bingoBoards(iBoard)%mask(:,iCheck))) then !winning row
+                    bingoBoards(iBoard)%won = .true.
+                end if
+            end do
+        end do
+
+        !check for one left
+        if (count(bingoBoards(:)%won) == size(bingoBoards) - 1) then
+            do iBoard = 1, size(bingoBoards)
+                if (.not. bingoBoards(iBoard)%won) then
+                    winBoard = iBoard
+                end if
+            end do
+        else if (count(bingoBoards(:)%won) == size(bingoBoards)) then
+            winDraw = bingoBalls(iPlay)
+            exit partTwoMain
+        end if
+
+    end do partTwoMain
+
+    write(*,*) 'Last winning draw is: ', winDraw
+    write(*,*) 'Last winning board is: ', bingoBoards(winBoard)
+    score = winDraw * (sum(bingoBoards(winBoard)%nums) - sum(bingoBoards(winBoard)%nums, mask=bingoBoards(winBoard)%mask))
+    write(*,*) 'Winning score for part 2 is: ', score
+
 contains
     !subroutine to split line by comma delimiter from Thomas Koenig on the comp.lang.fortran google group
     subroutine split_read_int(input_str, output_array)
