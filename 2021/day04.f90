@@ -13,7 +13,7 @@ program day04
     type(board),dimension(:),allocatable :: bingoBoards
     integer,dimension(:),allocatable :: bingoBalls
     integer :: iostatus, nLines, nEmptyLines, nBoards, iBoard, rows, rowBoard, iPlay, iCheck, winDraw, winBoard, score
-    character(199) :: fname, line
+    character(299) :: fname, line
 
     ! -------------------- parse input file to get lengths --------------------
     fname='data/day04.txt'
@@ -44,7 +44,7 @@ program day04
             iBoard = iBoard + 1
             rowBoard = 1
         else
-            read(line, '(I2,1X,I2,1X,I2,1X,I2,1X,I2))') bingoBoards(iBoard)%nums(rowBoard,:)
+            read(line, '(I2,1X,I2,1X,I2,1X,I2,1X,I2))') bingoBoards(iBoard)%nums(:,rowBoard)
             rowBoard = rowBoard + 1
         end if
     end do
@@ -56,14 +56,14 @@ program day04
     ! -------------------- part 1 --------------------
     partOneMain: do iPlay = 1, size(bingoBalls)
         !play the game (where function in that was implemented in fortran 90 seen used by jacobwilliams also)
-        do iBoard = 1, size(bingoBoards)
+        do iBoard = 1, nBoards
             where (bingoBoards(iBoard)%nums == bingoBalls(iPlay))
                 bingoBoards(iBoard)%mask = .true.
             end where
         end do
 
         !check for win
-        do iBoard = 1, size(bingoBoards)
+        do iBoard = 1, nBoards
             do iCheck = 1, 5
                 if (all(bingoBoards(iBoard)%mask(iCheck,:))) then !winning col
                     winDraw = bingoBalls(iPlay)
@@ -83,20 +83,23 @@ program day04
 
     ! -------------------- part 2 --------------------
 
-    do iBoard = 1, size(bingoBoards)
+    !reset everything
+    do iBoard = 1, nBoards
         bingoBoards(iBoard)%mask = .false. !reset boards
     end do
+    winDraw = 0
+    winBoard = 0
 
     partTwoMain: do iPlay = 1, size(bingoBalls)
         !play the game (where function in that was implemented in fortran 90 seen used by jacobwilliams also)
-        do iBoard = 1, size(bingoBoards)
+        do iBoard = 1, nBoards
             where (bingoBoards(iBoard)%nums == bingoBalls(iPlay))
                 bingoBoards(iBoard)%mask = .true.
             end where
         end do
 
         !check for win, update won logical in board type
-        do iBoard = 1, size(bingoBoards)
+        do iBoard = 1, nBoards
             do iCheck = 1, 5
                 if (all(bingoBoards(iBoard)%mask(iCheck,:))) then !winning col
                     bingoBoards(iBoard)%won = .true.
@@ -107,21 +110,19 @@ program day04
         end do
 
         !check for one left
-        if (count(bingoBoards(:)%won) == size(bingoBoards) - 1) then
-            do iBoard = 1, size(bingoBoards)
+        if (count(bingoBoards(:)%won) == nBoards - 1) then
+            do iBoard = 1, nBoards
                 if (.not. bingoBoards(iBoard)%won) then
                     winBoard = iBoard
                 end if
             end do
-        else if (count(bingoBoards(:)%won) == size(bingoBoards)) then
+        else if (count(bingoBoards(:)%won) == nBoards) then
             winDraw = bingoBalls(iPlay)
             exit partTwoMain
         end if
 
     end do partTwoMain
 
-    write(*,*) 'Last winning draw is: ', winDraw
-    write(*,*) 'Last winning board is: ', bingoBoards(winBoard)
     score = winDraw * (sum(bingoBoards(winBoard)%nums) - sum(bingoBoards(winBoard)%nums, mask=bingoBoards(winBoard)%mask))
     write(*,*) 'Winning score for part 2 is: ', score
 
