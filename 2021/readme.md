@@ -22,7 +22,7 @@ Part 2 took a bit more thinking.  Initially I tried to find some kind of linked 
 
 As per usual reading in the data took much longer to figure out than implementing the logic required for the bingo game.  I knew I needed a data type to contain the bingo boards and same sized logical array: in Python I would probably try a dictionary but I knew you could create your own data types in Fortran, and [jacobwilliams](https://github.com/jacobwilliams) on Github had a great implementation of a board type containing the two arrays which I used.  I also used a subroutine from Thomas Koenig (on the comp.lang.fortran google group) to split a line by comma delimiter to separate the initial line of (as I called them) bingo balls.
 
-I discovered a ocuple of great build in functions for arrays to do some of the work in part 1
+I discovered a ocuple of great built in functions for arrays to do some of the work in part 1
 
 * Once again from [jacobwilliams](https://github.com/jacobwilliams) the [where](http://www.personal.psu.edu/jhm/f90/statements/where.html) function (used to mask the assignment or evaluation of arrays) to mark in the logical array where the last called bingo ball matched a number in a bingo board
 * The [sum](https://gcc.gnu.org/onlinedocs/gfortran/SUM.html) function to quickly evaluate the result of the unmarked numbers
