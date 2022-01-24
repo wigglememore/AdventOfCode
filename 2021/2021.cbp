@@ -41,20 +41,22 @@
 		</Unit>
 		<Unit filename="day02.f90">
 			<Option weight="2" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="day03.f90">
 			<Option weight="0" />
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="day04.f90">
-			<Option weight="2" />
-			<Option target="Release" />
+			<Option weight="0" />
 		</Unit>
 		<Unit filename="utils/precmod.f90">
 			<Option weight="0" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="utils/stringmod.f90">
 			<Option weight="1" />
+			<Option target="Release" />
 		</Unit>
 		<Extensions />
 	</Project>
