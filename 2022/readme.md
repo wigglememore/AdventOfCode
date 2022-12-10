@@ -8,3 +8,7 @@ Holy moly!  Why does "with open() as name" remove the last empty line when readi
 ## [Day 2](https://adventofcode.com/2022/day/2) ##
 
 A much more clean and pythonic solution for day 2, still solving whilst parsing the input but with some neat functions to cut-down on clutter and indentations.
+
+## [Day 3](https://adventofcode.com/2022/day/3) ##
+
+Definitely should have split some of the work out into functions, but it works.  You cannot use enumerate on the "with open() as name" object, so instead of using readlines() and operating with enumerate, I just saved the last two values with a counter and a couple of variables to accomplish part 2.  Set intersection was my friend for this task.
