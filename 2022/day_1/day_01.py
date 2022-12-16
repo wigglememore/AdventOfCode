@@ -6,7 +6,9 @@ top_3_cal = 0
 
 with open("input.txt") as calorie_list:
     for line in calorie_list:
-        if line == "\n":
+        if line != "\n":
+            current_calories += int(line)
+        else:    
             #single max calculation
             if current_calories > max_calories:
                 max_calories = current_calories
@@ -22,8 +24,6 @@ with open("input.txt") as calorie_list:
                 top_3_cal = current_calories
             #reset counter
             current_calories = 0
-        else:
-            current_calories += int(line)
 
 print(f"The elf carrying the most calories has a whopping {max_calories}")
 print(f"The three elves carrying the most calories have a whopping {top_1_cal + top_2_cal + top_3_cal} combined!")
