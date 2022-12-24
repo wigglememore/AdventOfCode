@@ -22,7 +22,7 @@ Definitely should have split some of the work out into functions, but it works. 
 
 Reasonably simple, almost worked first time after writing it all and pressing go.  If only I had remembered to change the strings to integers before comparing them.  Speaking of which, I should probably have done the conversion to integers at the start when splitting everything up, instead of doing it every time I used the input; some wasted time but it works.
 
-## [Day 5](https://adventofcode.com/2022/day/) ##
+## [Day 5](https://adventofcode.com/2022/day/5) ##
 
 Well parsing the input took by far the most amount of time.  I tried writing proper code and (in my opinion) it looks quite nice.  Some nice uses for list comprehensions throughout.  Perhaps a bit too much "lets put as much as possible on one line" which kind of affects readability, but generally it feels like quite a nice solution.
 
