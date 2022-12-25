@@ -4,6 +4,7 @@
 - [Day 3](#day-3)
 - [Day 4](#day-4)
 - [Day 5](#day-5)
+- [Day 6](#day-6)
 
 
 ## [Day 1](https://adventofcode.com/2022/day/1) ##
@@ -25,5 +26,9 @@ Reasonably simple, almost worked first time after writing it all and pressing go
 ## [Day 5](https://adventofcode.com/2022/day/5) ##
 
 Well parsing the input took by far the most amount of time.  I tried writing proper code and (in my opinion) it looks quite nice.  Some nice uses for list comprehensions throughout.  Perhaps a bit too much "lets put as much as possible on one line" which kind of affects readability, but generally it feels like quite a nice solution.
+
+## [Day 6](https://adventofcode.com/2022/day/6) ##
+
+The easiest day by far for me I think, definitely the one that took the least time.  Uses a very tidy function that takes in the input string and the length of the packet/message, so part 1 and part 2 just call the function with a different input.
 
 ## Day next ##
