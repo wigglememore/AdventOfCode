@@ -1,11 +1,12 @@
 ## The Wonderful World of Advent of Code 2022 ##
-- [Day 1](#day-1)
-- [Day 2](#day-2)
-- [Day 3](#day-3)
-- [Day 4](#day-4)
-- [Day 5](#day-5)
-- [Day 6](#day-6)
-- [Day 7](#day-7)
+- [Day 1: Calorie Counting](#day-1)
+- [Day 2: Rock Paper Scissors](#day-2)
+- [Day 3: Rucksack Reorganization](#day-3)
+- [Day 4: Camp Cleanup](#day-4)
+- [Day 5: Supply Stacks](#day-5)
+- [Day 6: Tuning Trouble](#day-6)
+- [Day 7: No Space Left On Device](#day-7)
+- [Day 8: Treetop Tree House](#day-8)
 
 
 ## [Day 1: Calorie Counting](https://adventofcode.com/2022/day/1) ##
