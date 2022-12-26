@@ -5,6 +5,7 @@
 - [Day 4](#day-4)
 - [Day 5](#day-5)
 - [Day 6](#day-6)
+- [Day 7](#day-7)
 
 
 ## [Day 1](https://adventofcode.com/2022/day/1) ##
@@ -30,5 +31,9 @@ Well parsing the input took by far the most amount of time.  I tried writing pro
 ## [Day 6](https://adventofcode.com/2022/day/6) ##
 
 The easiest day by far for me I think, definitely the one that took the least time.  Uses a very tidy function that takes in the input string and the length of the packet/message, so part 1 and part 2 just call the function with a different input.
+
+## [Day 7](https://adventofcode.com/2022/day/7) ##
+
+I think a more proper way to do this would be to write a class for a directory, with attributes of parent and child directories, and methods to find the storage used; but I'm not very good at programming, so I kind of just tracked the current directory in a list of strings, and tracked the storage used in a dictionary.  I was intiially stumped until I realised (with the help of a search on the subreddit) that there could be the same name subdirectory in different directories, which I was counting as a single directory, rather than separate.  Part two was a simple extension by looping through the directory sizes with a bit of logic.
 
 ## Day next ##
