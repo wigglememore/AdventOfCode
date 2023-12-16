@@ -1,8 +1,5 @@
-
-
-#print(f"The elf carrying the most calories has a whopping {max_calories}")
-#print(f"The three elves carrying the most calories have a whopping {top_1_cal + top_2_cal + top_3_cal} combined!")
-
+import regex as re
+from word2number import w2n
 
 def read_input(input_file_name: str) -> list:
     amended_list = []
@@ -26,6 +23,25 @@ def calibration_sum(input_file: list) -> int:
                 break
         num_sum += int(first_num + last_num)
     return num_sum
-        
-print(f"Part 1 example test: ", calibration_sum(read_input("input_example")) == 142)
+
+def calibration_spelled_sum(input_file: list) -> int:
+    pattern = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    regex = re.compile(r'(' + '|'.join(pattern) + r')')
+    num_sum = 0
+    for line in input_file: 
+        instances = regex.findall(line, overlapped=True)
+        if instances[0].isdigit():
+            first_num = instances[0]
+        else:
+            first_num = str(w2n.word_to_num(instances[0]))
+        if instances[-1].isdigit():
+            last_num = instances[-1]
+        else:
+            last_num = str(w2n.word_to_num(instances[-1]))
+        num_sum += int(first_num + last_num)
+    return num_sum
+
+print(f"Part 1 example test: ", calibration_sum(read_input("input_example_p1")) == 142)
 print(f"Part 1 answer: ", calibration_sum(read_input("input")))
+print(f"Part 2 example test: ", calibration_spelled_sum(read_input("input_example_p2")) == 281)
+print(f"Part 2 answer: ", calibration_spelled_sum(read_input("input")))
