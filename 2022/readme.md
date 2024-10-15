@@ -39,6 +39,6 @@ I think a more proper way to do this would be to write a class for a directory, 
 
 ## [Day 8: Treetop Tree House](https://adventofcode.com/2022/day/8) ##
 
-Finally left the realm of the base python installation to use numpy to handle the array operations.  Numpy's genfromtext made reading in the array a breeze.  Instead of checking every direction every time, I stopped checking if it became visible.  I'm sure you could optimise this by checking against the nearest two edges first since searching is O(n), but the code ran quickly enough.  Very similar solution for part 2, just changed the "check for visibility" function to "count to max visibility".  Also wrote a couple of functions to test for the solutions given in the examples which helped with debugging (which, as expected, was almost entirely due to come poor indexing and slicing..).
+Finally left the realm of the base python installation to use numpy to handle the array operations.  Numpy's genfromtext made reading in the array a breeze.  Instead of checking every direction every time, I stopped checking if it became visible.  I'm sure you could optimise this by checking against the nearest two edges first since searching is O(n), but the code ran quickly enough.  Very similar solution for part 2, just changed the "check for visibility" function to "count to max visibility".  Also wrote a couple of functions to test for the solutions given in the examples which helped with debugging (which, as expected, was almost entirely due to some poor indexing and slicing..).
 
 ## Day next ##
